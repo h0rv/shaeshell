@@ -1,0 +1,7 @@
+shaeshell
+
+A simple shell implementation for learning and fun.
+
+-----
+
+Based on the tutorial by Stephen Brennan: https://brennan.io/2015/01/16/write-a-shell-in-c/
