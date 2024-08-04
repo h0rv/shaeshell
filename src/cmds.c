@@ -3,8 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#define DEFAULT_CD_PATH "~"
-
 // Built-in commands
 int cd(char **args);
 int help(char **args);
@@ -29,13 +27,13 @@ int (*cmds_func[])(char **) = {
 int num_cmds() { return sizeof(cmds_str) / sizeof(char *); }
 
 int cd(char **args) {
-  char *arg = args[0];
+  char *dir = args[1];
 
-  if (arg == NULL) {
-    arg = DEFAULT_CD_PATH;
+  if (dir == NULL) {
+    dir = getenv("HOME");
   }
 
-  int status = chdir(arg);
+  int status = chdir(dir);
 
   if (status != 0) {
     perror("shaeshell: failed to cd");
