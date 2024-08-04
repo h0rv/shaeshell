@@ -18,26 +18,25 @@
 void print_prompt() { printf(PROMPT); }
 
 void loop() {
-  int status = 1;
-  while (status) {
-    print_prompt();
+    int status = 1;
+    while (status) {
+        print_prompt();
 
-    char *line = read_line();
-    char **args = parse_line(line);
-    status = execute(args);
+        char* line = read_line();
+        char** args = parse_line(line);
+        status = execute(args);
 
-    free(line);
-    free(args);
-  }
+        free(line);
+        free(args);
+    }
 }
 
 void cleanup() {}
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
+    load_config();
+    loop();
+    cleanup();
 
-  load_config();
-  loop();
-  cleanup();
-
-  return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
